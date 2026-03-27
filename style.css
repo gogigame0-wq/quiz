@@ -71,6 +71,16 @@ button:active {
   background: #357ae8;
 }
 
+#logoutBtn {
+  background: #f44336;
+  color: white;
+  font-weight: 600;
+}
+
+#logoutBtn:hover {
+  background: #d32f2f;
+}
+
 .hidden {
   display: none;
 }
