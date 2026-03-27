@@ -12,14 +12,12 @@ body {
   align-items: center;
 }
 
-/* Container */
 .app {
   width: 100%;
   max-width: 400px;
   padding: 20px;
 }
 
-/* Glass card */
 .card {
   backdrop-filter: blur(20px);
   background: rgba(255, 255, 255, 0.15);
@@ -31,18 +29,15 @@ body {
   animation: fadeIn 0.6s ease;
 }
 
-/* Title */
 h1 {
   margin-bottom: 30px;
   font-weight: 600;
 }
 
-/* Question */
 h2 {
   margin-bottom: 20px;
 }
 
-/* Buttons */
 button {
   width: 100%;
   padding: 14px;
@@ -57,30 +52,30 @@ button {
   backdrop-filter: blur(10px);
 }
 
-/* Hover effect */
 button:hover {
   transform: translateY(-3px);
   background: rgba(255,255,255,0.35);
 }
 
-/* Click effect */
 button:active {
   transform: scale(0.97);
 }
 
-/* Hidden */
+#googleLogin {
+  background: #4285F4;
+  color: white;
+  font-weight: 600;
+}
+
+#googleLogin:hover {
+  background: #357ae8;
+}
+
 .hidden {
   display: none;
 }
 
-/* Fade animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from {opacity: 0; transform: translateY(15px);}
+  to {opacity: 1; transform: translateY(0);}
 }
