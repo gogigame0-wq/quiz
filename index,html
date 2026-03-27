@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Zone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <div class="card">
+
+    <h1>🎯 Quiz Zone</h1>
+
+    <div id="categories">
+      <button onclick="startQuiz('tech')">💻 Компютри</button>
+      <button onclick="startQuiz('internet')">🌐 Интернет</button>
+      <button onclick="startQuiz('friendship')">❤️ Приятелство</button>
+    </div>
+
+    <div id="quiz" class="hidden">
+      <h2 id="question"></h2>
+      <div id="answers"></div>
+    </div>
+
+    <div id="result" class="hidden">
+      <h2 id="score"></h2>
+      <button onclick="location.reload()">🔄 Отново</button>
+    </div>
+
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
