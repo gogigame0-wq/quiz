@@ -1,7 +1,7 @@
 // Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 // Firebase config
 const firebaseConfig = {
@@ -22,15 +22,27 @@ const provider = new GoogleAuthProvider();
 
 // Google login
 const loginBtn = document.getElementById("googleLogin");
+const logoutBtn = document.getElementById("logoutBtn");
 
 loginBtn.addEventListener("click", () => {
   signInWithPopup(auth, provider)
     .then(result => {
-      const user = result.user;
       document.getElementById("login").classList.add("hidden");
       document.getElementById("categories").classList.remove("hidden");
+      document.getElementById("logoutContainer").classList.remove("hidden");
     })
     .catch(error => alert("Грешка при логин с Google"));
+});
+
+// Logout
+logoutBtn.addEventListener("click", () => {
+  signOut(auth).then(() => {
+    document.getElementById("login").classList.remove("hidden");
+    document.getElementById("categories").classList.add("hidden");
+    document.getElementById("logoutContainer").classList.add("hidden");
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("result").classList.add("hidden");
+  });
 });
 
 // Ако потребителят вече е влязъл
@@ -38,11 +50,12 @@ onAuthStateChanged(auth, user => {
   if (user) {
     document.getElementById("login").classList.add("hidden");
     document.getElementById("categories").classList.remove("hidden");
+    document.getElementById("logoutContainer").classList.remove("hidden");
   }
 });
 
 // ------------------------
-// Quiz data (20 въпроса за категория)
+// Quiz data (20 въпроса)
 // ------------------------
 const quizzes = {
   tech: [
@@ -98,7 +111,7 @@ const quizzes = {
     { q: "Лоялността важна ли е?", a: ["Да", "Не"], correct: 0 },
     { q: "Обичаш ли изненади за приятели?", a: ["Да", "Не"], correct: 0 },
     { q: "Често ли комуникираш?", a: ["Да", "Не"], correct: 0 },
-    { q: "Споделяш ли радости?", a: ["Да", "Не"], correct: 0 },
+    { q: "Споделяш радости?", a: ["Да", "Не"], correct: 0 },
     { q: "Извиняваш ли се?", a: ["Да", "Не"], correct: 0 },
     { q: "Доверие е важно?", a: ["Да", "Не"], correct: 0 },
     { q: "Подкрепяш ли в трудности?", a: ["Да", "Не"], correct: 0 },
